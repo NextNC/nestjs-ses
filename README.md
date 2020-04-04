@@ -20,7 +20,7 @@
 ### Introduction
 
 This is a simple wrapper of [node-ses](https://www.npmjs.com/package/node-ses).
-It only comtemplates the send email and verify email functionalities, but later it will be added more. Just ping me or open pull request and contribute :)
+It only comtemplates the send email functionality, but later it will be added more. Just ping me or open pull request and contribute :)
 
 ### Installation
 
