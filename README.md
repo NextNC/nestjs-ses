@@ -33,7 +33,7 @@ npm install @nextnm/nestjs-ses
 #### Importing module
 
 ```typescript
-import { NestjsSesModule } from '@nextm/nestjs-ses';
+import { SesModule } from '@nextm/nestjs-ses';
 @Module({
   imports: [
     SesModule.forRoot({
@@ -67,12 +67,12 @@ interface EmailOptions {
 
 ```typescript
 import { SesService } from '@nextm/nestjs-ses';
-import { EmailOptions } from '@nextm/nestjs-ses'
+import { SesEmailOptions } from '@nextm/nestjs-ses'
 
 @Injectable()
 export class YourService {
   constructor(private sesService: SesService) {
-    const options: EmailOptions = {
+    const options: SesEmailOptions = {
       from:'',
       to:'',
       subject:'',
