@@ -38,7 +38,7 @@ import { SesModule } from '@nextm/nestjs-ses';
   imports: [
     SesModule.forRoot({
       SECRET: '<YOUR SECRET>',
-      AKI_KEY: '<YOUR AKI_KEY>',
+      API_KEY: '<YOUR API_KEY>',
       REGION: 'eu-west-1',
     }),
   ],

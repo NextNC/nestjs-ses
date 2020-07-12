@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigurationSes } from './configuration';
-import { AKI_KEY, REGION, SECRET } from './tokens/tokens';
+import { API_KEY, REGION, SECRET } from './tokens/tokens';
 import { SesService } from './services/relay/ses.service';
 
 @Module({})
@@ -12,12 +12,12 @@ export class SesModule {
       //     ...controllers,
       //   ],
       providers: [
-        { provide: AKI_KEY, useValue: config.AKI_KEY },
+        { provide: API_KEY, useValue: config.apiKey },
         {
           provide: REGION,
-          useValue: config.REGION,
+          useValue: config.region,
         },
-        { provide: SECRET, useValue: config.SECRET },
+        { provide: SECRET, useValue: config.secret },
         SesService,
       ],
       exports: [SesService],
