@@ -1,5 +1,5 @@
 export interface ConfigurationSes {
-  secret: string;
-  apiKey: string;
+  secret?: string;
+  apiKey?: string;
   region?: string;
 }

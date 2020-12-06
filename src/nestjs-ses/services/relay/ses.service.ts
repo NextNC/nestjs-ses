@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, Optional } from '@nestjs/common';
 import { API_KEY, REGION, SECRET } from '../../tokens/tokens';
 import * as ses from 'node-ses';
 
@@ -17,9 +17,9 @@ export interface SesEmailOptions {
 export class SesService {
   private readonly ses;
   constructor(
-    @Inject(API_KEY) private readonly apiKey,
-    @Inject(REGION) private readonly region,
-    @Inject(SECRET) private readonly secret,
+    @Optional() @Inject(API_KEY) private readonly apiKey,
+    @Optional() @Inject(REGION) private readonly region,
+    @Optional() @Inject(SECRET) private readonly secret,
   ) {
     this.ses = ses.createClient({
       key: apiKey,
