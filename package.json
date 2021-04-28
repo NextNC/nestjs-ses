@@ -42,7 +42,7 @@
     "@nestjs/common": "^7.0.7"
   },
   "dependencies": {
-    "node-ses": "^2.2.1",
+    "node-ses": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.4"
   },
