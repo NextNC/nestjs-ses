@@ -1,6 +1,6 @@
 {
   "name": "@nextnm/nestjs-ses",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "NestJS provider for sending emails with ses",
   "author": "Nuno Carvalhão <nuno.carvalhao@gmail.com>",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "@nestjs/common": "^7.0.7"
   },
   "dependencies": {
-    "node-ses": "^2.2.1",
+    "node-ses": "^3.0.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.4"
   },
