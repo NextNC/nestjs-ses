@@ -1,3 +1,3 @@
-export const AKI_KEY = 'AKI_KEY';
-export const SECRET = 'SECRET';
-export const REGION = 'REGION';
+export const API_KEY = 'SES_API_KEY';
+export const SECRET = 'SES_SECRET';
+export const REGION = 'SES_REGION';

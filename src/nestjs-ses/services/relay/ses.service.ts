@@ -1,5 +1,5 @@
-import { Injectable, Inject } from '@nestjs/common';
-import { AKI_KEY, REGION, SECRET } from '../../tokens/tokens';
+import { Injectable, Inject, Optional } from '@nestjs/common';
+import { API_KEY, REGION, SECRET } from '../../tokens/tokens';
 import * as ses from 'node-ses';
 
 export interface SesEmailOptions {
@@ -17,9 +17,9 @@ export interface SesEmailOptions {
 export class SesService {
   private readonly ses;
   constructor(
-    @Inject(AKI_KEY) private readonly apiKey,
-    @Inject(REGION) private readonly region,
-    @Inject(SECRET) private readonly secret,
+    @Optional() @Inject(API_KEY) private readonly apiKey,
+    @Optional() @Inject(REGION) private readonly region,
+    @Optional() @Inject(SECRET) private readonly secret,
   ) {
     this.ses = ses.createClient({
       key: apiKey,
@@ -46,7 +46,6 @@ export class SesService {
     return new Promise((resolve, reject) => {
       this.ses.sendEmail(email, (err, data, res) => {
         if (err) {
-          console.error(err);
           return reject(err);
         }
         return resolve(res);
