@@ -1,6 +1,6 @@
 import { Injectable, Inject, Optional } from '@nestjs/common';
-import { API_KEY, REGION, SECRET } from '../../tokens/tokens';
 import * as ses from 'node-ses';
+import { SES_CONFIG_OPTIONS, SesOptions } from '../../ses.interface';
 
 export interface SesEmailOptions {
   from: string;
@@ -15,16 +15,14 @@ export interface SesEmailOptions {
 
 @Injectable()
 export class SesService {
-  private readonly ses;
+  private readonly ses: ses.Client;
   constructor(
-    @Optional() @Inject(API_KEY) private readonly apiKey,
-    @Optional() @Inject(REGION) private readonly region,
-    @Optional() @Inject(SECRET) private readonly secret,
+    @Inject(SES_CONFIG_OPTIONS) options: SesOptions,
   ) {
     this.ses = ses.createClient({
-      key: apiKey,
-      amazon: `https://email.${region}.amazonaws.com`,
-      secret,
+      key: options.apiKey,
+      amazon: `https://email.${options.region}.amazonaws.com`,
+      secret: options.secret,
     });
   }
 
