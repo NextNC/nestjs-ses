@@ -59,7 +59,7 @@ interface EmailOptions {
   replyTo?: string;
   cc: string;
   bcc: string[];
-  altText?: string;
+  text?: string;
 }
 ```
 

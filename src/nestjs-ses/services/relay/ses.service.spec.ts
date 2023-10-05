@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { API_KEY, REGION, SECRET } from '../../tokens/tokens';
 import { SesService } from './ses.service';
+import { SES_CONFIG_OPTIONS } from '../../ses.interface';
 
 describe('SesService', () => {
   let service: SesService;
@@ -9,12 +9,7 @@ describe('SesService', () => {
     beforeEach(async () => {
       const module: TestingModule = await Test.createTestingModule({
         providers: [
-          { provide: API_KEY, useValue: 'config.apiKey' },
-          {
-            provide: REGION,
-            useValue: 'config.region',
-          },
-          { provide: SECRET, useValue: 'config.secret' },
+          { provide: SES_CONFIG_OPTIONS, useValue: { apiKey: 'config.apiKey', region: 'config.region', secret: 'config.secret' } },
           SesService,
         ],
       }).compile();
@@ -27,27 +22,13 @@ describe('SesService', () => {
     });
 
     it('should have the apiKey', () => {
-      expect(service['apiKey']).toEqual('config.apiKey');
+      expect(service['ses']['key']).toEqual('config.apiKey');
     });
     it('should have the region', () => {
-      expect(service['region']).toEqual('config.region');
+      expect(service['ses']['amazon']).toEqual('https://email.config.region.amazonaws.com');
     });
     it('should have the secret', () => {
-      expect(service['secret']).toEqual('config.secret');
-    });
-  });
-
-  describe('with no keys specified', () => {
-    beforeEach(async () => {
-      const module: TestingModule = await Test.createTestingModule({
-        providers: [SesService],
-      }).compile();
-
-      service = module.get<SesService>(SesService);
-    });
-
-    it('should be defined', () => {
-      expect(service).toBeDefined();
+      expect(service['ses']['secret']).toEqual('config.secret');
     });
   });
 });
